@@ -1,0 +1,23 @@
+{
+  "name": "100x_academy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahliyoA/100x_academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahliyoA/100x_academy/issues"
+  },
+  "homepage": "https://github.com/mahliyoA/100x_academy#readme",
+  "description": "",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
