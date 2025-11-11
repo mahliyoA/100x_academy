@@ -7,15 +7,15 @@ bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const user = msg.from;
 
-  
- 
-  
+  // Foydalanuvchi ma'lumotlarini Git Bash-ga chiqaramiz
+  console.log("===============");
+  console.log("Yangi foydalanuvchi:");
   console.log("Ism:", user.first_name || "Noma'lum");
   console.log("Username:", user.username ? "@" + user.username : "yo‘q");
   console.log("ID:", user.id);
- 
+  console.log("===============");
 
- 
+  // Foydalanuvchiga "Boshlash" tugmasi
   bot.sendMessage(chatId, `Salom, ${user.first_name}! 👋\n100x Academy botiga xush kelibsiz!`, {
     reply_markup: {
       keyboard: [[{ text: "🚀 Boshlash" }]],
@@ -24,11 +24,12 @@ bot.onText(/\/start/, (msg) => {
   });
 });
 
-
+// Tugmalarni boshqarish
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text;
 
+  // Boshlash bosilganda kurslar ro'yxati
   if (text === "🚀 Boshlash") {
     bot.sendMessage(chatId, "📚 Quyidagi kurslardan birini tanlang:", {
       reply_markup: {
@@ -42,10 +43,11 @@ bot.on("message", (msg) => {
     });
   }
 
+  // 🔹 Faqat Ingliz tili kursi
   if (text === "🇬🇧 Ingliz tili kursi") {
     bot.sendMessage(
       chatId,
-      "📘 Ingliz tili kursi haqida:\n Haftasiga 3 marta\n 300 000 so‘m\n👩‍🏫 Bonu Teacher",
+      "📘 Ingliz tili kursi:\n Haftasiga 3 marta\n 300 000 so‘m\n👩‍🏫 O‘qituvchi: Bonu Teacher",
       {
         reply_markup: {
           keyboard: [[{ text: " Ro‘yxatdan o‘tish" }], [{ text: "⬅️ Orqaga" }]],
@@ -53,36 +55,14 @@ bot.on("message", (msg) => {
         },
       }
     );
+
+   
+    bot.sendSticker(chatId, "CAACAgIAAxkBAAEBJxFg0fBpz_lXj1J7x8lOyeIRbtkG4gACRgADVp29CkKXVGkHh-GgHwQ");
   }
 
-  if (text === "🇷🇺 Rus tili kursi") {
-    bot.sendMessage(
-      chatId,
-      "📗 Rus tili kursi haqida:\n Haftasiga 3 marta\n 250 000 so‘m\n👩‍🏫 Nurjahon",
-      {
-        reply_markup: {
-          keyboard: [[{ text: " Ro‘yxatdan o‘tish" }], [{ text: "⬅️ Orqaga" }]],
-          resize_keyboard: true,
-        },
-      }
-    );
-  }
-
-  if (text === "🇹🇷 Turk tili kursi") {
-    bot.sendMessage(
-      chatId,
-      "📙 Turk tili kursi haqida:\n Haftasiga 3 marta\n 280 000 so‘m\n👩‍🏫 Sultonposhsha",
-      {
-        reply_markup: {
-          keyboard: [[{ text: " Ro‘yxatdan o‘tish" }], [{ text: "⬅️ Orqaga" }]],
-          resize_keyboard: true,
-        },
-      }
-    );
-  }
-
+  // 🔹 Orqaga tugmasi
   if (text === "⬅️ Orqaga") {
-    bot.sendMessage(chatId, "Kurslar ro‘yxati:", {
+    bot.sendMessage(chatId, "📚 Kurslar ro‘yxati:", {
       reply_markup: {
         keyboard: [
           [{ text: "🇬🇧 Ingliz tili kursi" }],
@@ -94,7 +74,13 @@ bot.on("message", (msg) => {
     });
   }
 
+  // 🔹 Ro‘yxatdan o‘tish
   if (text === " Ro‘yxatdan o‘tish") {
-    bot.sendMessage(chatId, "✅ Ro‘yxatdan o‘tish yaqin orada ishga tushadi.\n⬅️ Orqaga qayting.");
+    bot.sendMessage(chatId, "✅ Ro‘yxatdan o‘tish hozircha faol emas.\n⬅️ Orqaga qayting.");
+  }
+
+  // 🔹 Boshqa kurslar bosilganda hech narsa yubormaydi
+  if (text === "🇷🇺 Rus tili kursi" || text === "🇹🇷 Turk tili kursi") {
+ 
   }
 });
